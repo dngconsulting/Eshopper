@@ -2,6 +2,7 @@ package com.dngconsulting.demo.client.view.impl;
 
 import com.dngconsulting.demo.client.view.ContactView;
 import com.dngconsulting.demo.client.view.elemental.GeoLocation;
+import com.dngconsulting.demo.client.view.elemental.GeoLocationEvent;
 import com.dngconsulting.demo.client.view.elemental.GoogleMap;
 import com.dngconsulting.demo.client.view.elemental.GoogleMapDirections;
 import com.dngconsulting.demo.client.view.elemental.LatLng;
@@ -34,8 +35,9 @@ public class ContactViewImpl extends Composite implements ContactView {
 			manageDirections();
 		});
 		geoLocation.addEventListener("geo-response", (e)->{
-			lat = geoLocation.getLatitude();
-			lng = geoLocation.getLongitude();
+			GeoLocationEvent geoEvent = (GeoLocationEvent)e;
+			lat = geoEvent.getDetail().getLatitude();
+			lng = geoEvent.getDetail().getLongitude();
 			isGeoResponse = true;
 			manageDirections();
 		});
