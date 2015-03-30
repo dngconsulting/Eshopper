@@ -1,0 +1,28 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with type="com.dngconsulting.demo.client.resources.AppMessage" field="i18n"></ui:with>
+	<g:HTMLPanel>
+		<div class="col-sm-4">
+			<div class="product-image-wrapper">
+				<div class="single-products">
+						<div class="productinfo text-center">
+							<g:Image ui:field="productImg"></g:Image>
+							<h2 ui:field="priceLabel"></h2>
+							<p ui:field="nameLabel"></p>
+							<g:Anchor ui:field="addCartBtn" styleName="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><ui:text from="{i18n.addToCart}"/></g:Anchor>
+							<g:Anchor ui:field="seeDetailsBtn" styleName="btn btn-default add-to-cart"><i class="fa fa-list-ul"></i><ui:text from="{i18n.seeDetails}"/></g:Anchor>
+						</div>
+						<div class="product-overlay">
+							<div class="overlay-content">
+								<h2 ui:field="priceOverlay"></h2>
+								<p ui:field="nameOverlay"></p>
+								<g:Anchor ui:field="addCartBtnOverlay" styleName="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><ui:text from="{i18n.addToCart}"/></g:Anchor>
+								<g:Anchor ui:field="seeDetailsBtnOverlay" styleName="btn btn-default add-to-cart"><i class="fa fa-list-ul"></i><ui:text from="{i18n.seeDetails}"/></g:Anchor>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

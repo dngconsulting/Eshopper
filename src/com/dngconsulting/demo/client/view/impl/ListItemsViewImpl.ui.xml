@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:v="urn:import:com.dngconsulting.demo.client.view" 
+	xmlns:w="urn:import:com.dngconsulting.demo.client.view.widgets">
+	<ui:with type="com.dngconsulting.demo.client.resources.css.AppResources" field="res"></ui:with>
+	<g:HTMLPanel>
+			
+		<section>
+			<div class="{res.appstyle.container}">
+				<div class="{res.appstyle.row}">
+					<w:SideMenuView ui:field="sideMenu"></w:SideMenuView>
+					<div class="col-sm-9 {res.appstyle.paddingRight}">
+						<div class="{res.appstyle.features_items}"><!--features_items-->
+							<h2 class="{res.appstyle.title} text-center" ui:field="titleLabel"></h2>
+							<g:HTMLPanel ui:field="listProducts"/>
+						</div><!--features_items-->
+					</div>
+				</div>
+			</div>
+		</section>
+	</g:HTMLPanel>
+</ui:UiBinder> 

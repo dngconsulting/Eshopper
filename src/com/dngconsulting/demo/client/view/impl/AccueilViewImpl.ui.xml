@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:v="urn:import:com.dngconsulting.demo.client.view.widgets" xmlns:i="urn:import:com.dngconsulting.demo.client.view.impl">
+	<g:HTMLPanel>
+		
+		<v:Slider></v:Slider>
+		<i:ListItemsViewImpl ui:field="listItems"></i:ListItemsViewImpl>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

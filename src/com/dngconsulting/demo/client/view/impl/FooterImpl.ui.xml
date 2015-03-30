@@ -1,0 +1,90 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with type="com.dngconsulting.demo.client.resources.css.AppResources" field="res"></ui:with>
+	<g:HTMLPanel>
+			
+		<footer class="{res.appstyle.footer}"><!--Footer-->
+			
+			<div class="{res.appstyle.footerWidget}">
+				<div class="{res.appstyle.container}">
+					<div class="{res.appstyle.row}">
+						<div class="col-sm-2">
+							<div class="{res.appstyle.singleWidget}">
+								<h2>Service</h2>
+								<ul class="nav {res.appstyle.navStacked}">
+									<li><a href="#">Online Help</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Order Status</a></li>
+									<li><a href="#">Change Location</a></li>
+									<li><a href="#">FAQ’s</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="{res.appstyle.singleWidget}">
+								<h2>E Shop</h2>
+								<ul class="nav {res.appstyle.navStacked}">
+									<li><a href="#">Categories</a></li>
+									<li><a href="#">Brands</a></li>
+									<li><a href="#">Search items</a></li>
+									<li><a href="#">Gift Cards</a></li>
+									<li><a href="#">Services</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="{res.appstyle.singleWidget}">
+								<h2>Policies</h2>
+								<ul class="nav {res.appstyle.navStacked}">
+									<li><a href="#">Terms of Use</a></li>
+									<li><a href="#">Privecy Policy</a></li>
+									<li><a href="#">Refund Policy</a></li>
+									<li><a href="#">Billing System</a></li>
+									<li><a href="#">Ticket System</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="{res.appstyle.singleWidget}">
+								<h2>About E-Shop</h2>
+								<ul class="nav {res.appstyle.navStacked}">
+									<li><a href="#">Company Information</a></li>
+									<li><a href="#">Careers</a></li>
+									<li><a href="#">Store Location</a></li>
+									<li><a href="#">Affillate Program</a></li>
+									<li><a href="#">Copyright</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-3 col-sm-offset-1">
+							<div class="{res.appstyle.singleWidget}">
+								<h2>About E-Shop</h2>
+								<form action="#" class="{res.appstyle.searchform}">
+									<input type="text" placeholder="Your email address" />
+									<button type="submit" class="{res.appstyle.btn} btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+									<p>Get the most recent updates from <br />our site and be updated your self...</p>
+								</form>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="{res.appstyle.footerBottom}">
+				
+						<p class="{res.appstyle.span12}">
+                            Copyright © 2007 <a href="http://www.dng-consulting.com">http://www.dng-consulting.com</a> <br/>
+DNG Consulting SARL - 499 254 324 R.C.S. Toulouse<br/>
+Organisme de formation - Numéro d'agrément 73 31 05370 31<br/>
+7, rue de l'industrie 31320 Castanet <br/>
+Tél : 05 61 34 36 80 Fax : 05 31 60 35 20<br/>
+                        </p>
+					
+			</div>
+			
+		</footer><!--/Footer-->
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

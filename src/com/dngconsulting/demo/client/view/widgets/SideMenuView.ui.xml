@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with type="com.dngconsulting.demo.client.resources.AppMessage" field="i18n"></ui:with>
+	<g:HTMLPanel>
+		<div class="col-sm-3">
+			<div class="left-sidebar">
+				<h2><ui:text from="{i18n.category}"/></h2>
+				<div class="panel-group category-products" ui:field="listCat"><!--category-productsr-->
+					
+				</div><!--/category-products-->
+			
+				<div class="brands_products"><!--brands_products-->
+					<h2><ui:text from="{i18n.brands}"/></h2>
+					<div class="brands-name">
+						<ul class="nav nav-pills nav-stacked" ui:field="listBrand">
+							
+						</ul>
+					</div>
+				</div><!--/brands_products-->
+				
+			</div>
+		</div>
+				
+	</g:HTMLPanel>
+</ui:UiBinder> 

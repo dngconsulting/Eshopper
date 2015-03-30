@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with type="com.dngconsulting.demo.client.resources.AppMessage" field="i18n"></ui:with>
+	<ui:with type="com.dngconsulting.demo.client.resources.css.AppResources" field="res"></ui:with>
+	<ui:with type="com.dngconsulting.demo.client.resources.img.AppImage" field="img"></ui:with>
+	<ui:style gss='true'>
+	</ui:style>
+	
+	<g:HTMLPanel>
+	
+		<div class="{res.appstyle.container}">
+	    	<div class="bg">
+		    	<div class="{res.appstyle.row}">  
+		    		<div class="{res.appstyle.colSm8}">
+		    			<h2 class="{res.appstyle.title} text-center"><ui:text from="{i18n.directionsTitle}"/></h2>
+	    				<geo-location ui:field="geoLocation"></geo-location>
+						<google-map latitude="43.514" longitude="1.520" ui:field="gmap">
+							<google-map-marker latitude="43.5142574" longitude="1.5204417" zIndex="99999">
+							  <g:Image resource="{img.logodng}"></g:Image>
+							</google-map-marker>
+						</google-map>
+						<google-map-directions ui:field="directions"></google-map-directions>
+		    		</div>
+		    		<div class="{res.appstyle.colSm4}">
+	    			<div class="{res.appstyle.contactinfo}">
+	    				<h2 class="{res.appstyle.title} text-center"><ui:text from="{i18n.contactInfoTitle}"/></h2>
+	    				<address>
+	    					<p>DNG Consulting</p>
+							<p>7 rue de l'industrie</p>
+							<p>31320 Castanet-Tolosan</p>
+							<p>Tel: +33 5 61 34 36 80</p>
+							<p>Email: conseil@dng-consulting.com</p>
+	    				</address>
+	    			</div>
+    			</div>
+		    	</div>
+		    </div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

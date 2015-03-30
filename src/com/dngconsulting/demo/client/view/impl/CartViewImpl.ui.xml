@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with type="com.dngconsulting.demo.client.resources.AppMessage" field="i18n"></ui:with>
+	<ui:with type="com.dngconsulting.demo.client.resources.css.AppResources" field="style"></ui:with>
+	<g:HTMLPanel>
+		<section class="{style.appstyle.cart_items}">
+		<div class="container">
+			<div class="{style.appstyle.cart_info}">
+				<g:FlexTable styleName="table table-condensed" ui:field="cartTable"></g:FlexTable>
+			</div>
+		</div>
+	</section> <!--/#cart_items-->
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 
