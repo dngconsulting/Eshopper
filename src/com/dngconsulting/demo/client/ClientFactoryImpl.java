@@ -22,84 +22,95 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 
 public class ClientFactoryImpl implements ClientFactory
 {
-	private static final Place defaultPlace = new AccueilPlace();
-	private static final EventBus eventBus = new SimpleEventBus();
-	private static final AppPlaceController placeController = new AppPlaceController(eventBus,defaultPlace);
-	private static final HeaderImpl header = new HeaderImpl();
-	private static final FooterImpl footer = new FooterImpl();
-	private static final ListItemsViewImpl nouveautesView = new ListItemsViewImpl(AppMessage.MSG.newItems());
-	private static final ListItemsViewImpl productsByCategoryView = new ListItemsViewImpl("");
-	private static final ListItemsViewImpl productsByBrandView = new ListItemsViewImpl("");
-	private static final AccueilView accueilView = new AccueilViewImpl(AppMessage.MSG.features_items());
-	private static final ListItemsViewImpl allProductsView = new ListItemsViewImpl(AppMessage.MSG.allItems());
-	private static final ProductDetailsViewImpl ficheProduitView = new ProductDetailsViewImpl();
-	private static final CartViewImpl cartView = new CartViewImpl();
-	private static final ContactViewImpl contactView = new ContactViewImpl();
+	private static Place defaultPlace;
+	private static EventBus eventBus;
+	private static AppPlaceController placeController;
+	private static HeaderImpl header;
+	private static FooterImpl footer;
+	private static ListItemsViewImpl nouveautesView;
+	private static ListItemsViewImpl productsByCategoryView;
+	private static ListItemsViewImpl productsByBrandView;
+	private static AccueilView accueilView;
+	private static ListItemsViewImpl allProductsView;
+	private static ProductDetailsViewImpl ficheProduitView;
+	private static CartViewImpl cartView;
+	private static ContactViewImpl contactView;
 	
 	@Override
 	public Place getDefaultPlace() {
+		if(defaultPlace == null) defaultPlace = new AccueilPlace();
 		return defaultPlace;
 	}
 
 	@Override
 	public AccueilView getAccueilView() {
+		if(accueilView==null) accueilView = new AccueilViewImpl(AppMessage.MSG.features_items());
 		return accueilView;
 	}
 
 	@Override
 	public ListItemsView getAllProductsView() {
+		if(allProductsView==null) allProductsView = new ListItemsViewImpl(AppMessage.MSG.allItems());
 		return allProductsView;
 	}
 
 	@Override
 	public ListItemsView getNouveautesView() {
+		if(nouveautesView==null) nouveautesView = new ListItemsViewImpl(AppMessage.MSG.newItems());
 		return nouveautesView;
 	}
 
 	@Override
 	public ListItemsView getProductsByCategoryView() {
+		if(productsByCategoryView==null) productsByCategoryView = new ListItemsViewImpl("");
 		return productsByCategoryView;
 	}
 
 	@Override
 	public ListItemsView getProductsByBrandView() {
+		if(productsByBrandView==null) productsByBrandView = new ListItemsViewImpl("");
 		return productsByBrandView;
 	}
 
 	@Override
 	public ProductDetailsView getFicheproduitview() {
+		if(ficheProduitView==null) ficheProduitView = new ProductDetailsViewImpl();
 		return ficheProduitView;
 	}
 
 	@Override
 	public CartView getCartView() {
+		if(cartView==null) cartView = new CartViewImpl();
 		return cartView;
 	}
 
 	@Override
 	public ContactView getContactView() {
+		if(contactView==null) contactView = new ContactViewImpl();
 		return contactView;
 	}
 	
 	@Override
-	public EventBus getEventBus()
-	{
+	public EventBus getEventBus(){
+		if(eventBus==null) eventBus = new SimpleEventBus();
 		return eventBus;
 	}
 
 
 	@Override
-	public AppPlaceController getPlaceController()
-	{
+	public AppPlaceController getPlaceController(){
+		if(placeController==null) placeController =  new AppPlaceController(eventBus,defaultPlace);
 		return placeController;
 	}
 
 	
 	public Header getHeaderView() {
+		if(header==null) header =  new HeaderImpl();
 		return header;
 	}
 
 	public Footer getFooterView() {
+		if(footer==null) footer = new FooterImpl();
 		return footer;
 	}
 
