@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.dngconsulting.demo.server.EcomConfig;
 import com.dngconsulting.demo.shared.BrandAndCategoryDTO;
 import com.dngconsulting.demo.shared.ProductDTO;
 
@@ -28,7 +29,7 @@ public class ProductManager {
 		FileReader fr = null;
 		BufferedReader br = null;
 		try {
-			File file = new File("database.csv");
+			File file = new File(EcomConfig.get().getDatabaseFilePath()+"/database.csv");
 			fr = new FileReader(file);
 			br = new BufferedReader(fr);
 
