@@ -36,6 +36,10 @@ public class LocalStorageUtils {
 		}
 	}
 	
+	public static Panier getClonedPanier(){
+		return getInitialPanier();
+	}
+	
 	public static void storePanier(Panier panier){
 		if (store != null){
 			store.setItem(PANIER_KEY, BeanSerializerUtils.serializeToJson(panier));

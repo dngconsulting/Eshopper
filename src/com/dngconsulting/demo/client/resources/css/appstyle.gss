@@ -933,9 +933,15 @@ h2.title {
 *******Cart CSS******
 **************************/
 
+.cart_items .cart_btn {
+  width:100%;
+  text-align: right;
+  margin-bottom: 50px;
+}
+
 .cart_items .cart_info {
   border: 1px solid LIGHTGREY_COLOR;
-  margin-bottom: 50px
+  margin-bottom: 50px;
 }
 
 

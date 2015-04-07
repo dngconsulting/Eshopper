@@ -47,7 +47,7 @@
 									<li><g:Anchor ui:field="account"><i class="fa fa-user"></i> <ui:text from="{i18n.account}"/> </g:Anchor></li>
 									<li><g:Anchor ui:field="wishlist"><i class="fa fa-star"></i> <ui:text from="{i18n.wishlist}"/></g:Anchor></li>
 									<li><g:Anchor ui:field="checkout"><i class="fa fa-crosshairs"></i> <ui:text from="{i18n.checkout}"/></g:Anchor></li>
-									<li><g:Anchor href="#!cart:" ui:field="cart"><i class="fa fa-shopping-cart"></i> <ui:text from="{i18n.cart}"/></g:Anchor></li>
+									<li><g:Anchor href="#!cart:" ui:field="cart"><i class="fa fa-shopping-cart"></i> <ui:text from="{i18n.cart}"/> <span ui:field="countLabel"></span></g:Anchor></li>
 									<li><g:Anchor ui:field="login"><i class="fa fa-lock"></i> <ui:text from="{i18n.login}"/></g:Anchor></li>
 								</ul>
 							</div>

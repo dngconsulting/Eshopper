@@ -149,6 +149,26 @@ public interface AppMessage extends Messages {
 	@DefaultMessage("Information Contact")
 	String contactInfoTitle();
 	
+
+	@Key("cart.update.message")
+	@DefaultMessage("Le panier à été mis à jour")
+	String cartUpdateMessage();
+
+	@Key("cart.additem.message")
+	@DefaultMessage("L''article a été ajouté au panier")
+	String cartAddItemMessage();
+
+	@Key("cart.clear.message")
+	@DefaultMessage("Le panier est vidé")
+	String cartClearMessage();
 	
-	
+
+	@Key("cart.checkout.message")
+	@DefaultMessage("Le démonstrateur s''arrête là. Nous vidons ici le panier comme si la commande avait été envoyée...")
+	String cartCheckoutMessage();
+
+	@Key("cart.empty.message")
+	@DefaultMessage("Le panier est vide...")
+	String emptyCartMessage();
+
 }

@@ -203,6 +203,8 @@ public interface Appstyle extends CssResource {
 	String cart_delete();
 
 	String cart_info();
+	
+	String cart_btn();
 
 	String cart_items();
 

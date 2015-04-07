@@ -1,5 +1,6 @@
 package com.dngconsulting.demo.client;
 
+import com.dngconsulting.demo.client.activity.HeaderPresenter;
 import com.dngconsulting.demo.client.mappers.AppActivityMapper;
 import com.dngconsulting.demo.client.mappers.AppPlaceHistoryMapper;
 import com.dngconsulting.demo.client.places.AccueilPlace;
@@ -36,6 +37,8 @@ public class Ecom implements EntryPoint {
 		AppContext.getTrackerInstance().universalAccount("UA-54660467-1");
 		
 		EventBus eventBus = clientFactory.getEventBus();
+		AppContext.setEventBus(eventBus);
+		new HeaderPresenter(clientFactory, AppContext.getPanierItems().size());
 		PlaceController placeController = clientFactory.getPlaceController();
 		MainPanelImpl mainPanel = new MainPanelImpl(clientFactory.getHeaderView(), clientFactory.getFooterView());
 

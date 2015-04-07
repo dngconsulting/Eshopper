@@ -7,9 +7,11 @@ import com.dngconsulting.demo.client.view.widgets.WarningPopup;
 import com.google.gwt.animation.client.Animation;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.dom.client.UListElement;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -28,6 +30,7 @@ public class HeaderImpl extends Composite implements Header {
 	@UiField UListElement navBarUL;
 	@UiField AppMessage i18n;
 	@UiField AppResources res;
+	@UiField SpanElement countLabel;
 	
 	public HeaderImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -35,6 +38,11 @@ public class HeaderImpl extends Composite implements Header {
 		toogleNavigationBtn.addClickHandler((event)->{
 			animation.run(300);
 		});
+	}
+
+	@Override
+	public void setCountItems(int count) {
+		countLabel.setInnerSafeHtml(SafeHtmlUtils.fromSafeConstant("("+count+")"));
 	}
 	
 	@UiHandler({"fb","twitter","linkedin", "dribble","gplus","account","wishlist","checkout","login"})
@@ -104,4 +112,5 @@ public class HeaderImpl extends Composite implements Header {
 	        elem.getStyle().setHeight(height, Unit.PX);
 	    }
 	}
+
 }

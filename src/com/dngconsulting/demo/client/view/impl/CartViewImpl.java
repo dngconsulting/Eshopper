@@ -1,21 +1,29 @@
 package com.dngconsulting.demo.client.view.impl;
 
+import com.dngconsulting.demo.client.event.DeleteItemCartEvent;
+import com.dngconsulting.demo.client.event.DeleteItemCartHandlers;
 import com.dngconsulting.demo.client.resources.AppMessage;
 import com.dngconsulting.demo.client.resources.css.AppResources;
 import com.dngconsulting.demo.client.view.CartView;
+import com.dngconsulting.demo.client.view.widgets.WarningPopup;
 import com.dngconsulting.demo.shared.FormatHelper;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.ParagraphElement;
+import com.google.gwt.dom.client.SpanElement;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.UIObject;
 import com.google.gwt.user.client.ui.Widget;
 
 public class CartViewImpl extends Composite implements CartView {
@@ -27,6 +35,8 @@ public class CartViewImpl extends Composite implements CartView {
 	@UiField FlexTable cartTable;
 	@UiField AppMessage i18n;
 	@UiField AppResources style;
+	@UiField Button checkoutBtn;
+	@UiField SpanElement emptyLbl;
 	
 	interface DescCellTemplate extends SafeHtmlTemplates{
 		@Template("<h4>{1}</h4><p>{2}: {0}</p>")
@@ -37,13 +47,36 @@ public class CartViewImpl extends Composite implements CartView {
 	public CartViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		initHeaderTable();
+		checkoutBtn.addClickHandler((e)->{
+			if(cartTable.getRowCount()<=0){
+				WarningPopup popup = new WarningPopup(AppMessage.MSG.emptyCartMessage());
+				popup.showRelativeTo(checkoutBtn);
+				return;
+			}
+			WarningPopup popup = new WarningPopup(AppMessage.MSG.cartCheckoutMessage());
+			popup.center();
+			popup.addCloseHandler((closeEvent)->{
+				clearCart();
+				CartViewImpl.this.fireEvent(new DeleteItemCartEvent(true));
+			});
+			Timer t = new Timer() {
+				
+				@Override
+				public void run() {
+					popup.hide();
+				}
+			};
+			t.schedule(6000);
+		});
 	}
 	
 	public void clearCart(){
+		UIObject.setVisible(emptyLbl, true);
 		cartTable.removeAllRows();
 	}
 	
 	public void addItem(String photoFile, String ref, String name, double price, int qty){
+		if(UIObject.isVisible(emptyLbl)) UIObject.setVisible(emptyLbl, false);
 		int row = cartTable.getRowCount();
 		Widget itemcell = createItemCell(photoFile);
 		SafeHtml desc = createDesc(ref, name);
@@ -55,7 +88,7 @@ public class CartViewImpl extends Composite implements CartView {
 		totalP.setClassName(style.appstyle().cart_total_price());
 		totalP.setInnerHTML(FormatHelper.formatPrice(price*qty));
 		
-		Widget deleteCell = createDeleteCell(row, ref);
+		Widget deleteCell = createDeleteCell(ref);
 		
 		cartTable.setWidget(row, 0, itemcell);
 		cartTable.setHTML(row, 1, desc);
@@ -68,6 +101,12 @@ public class CartViewImpl extends Composite implements CartView {
 		cartTable.getCellFormatter().setStyleName(row, 2, style.appstyle().cart_price());
 		cartTable.getCellFormatter().setStyleName(row, 3, style.appstyle().cart_quantity());
 		cartTable.getCellFormatter().setStyleName(row, 5, style.appstyle().cart_delete());
+	}
+	
+
+	@Override
+	public HandlerRegistration addDeleteItemCartHandler(DeleteItemCartHandlers handler) {
+		return addHandler(handler, DeleteItemCartEvent.TYPE);
 	}
 
 	private void initHeaderTable() {
@@ -99,15 +138,27 @@ public class CartViewImpl extends Composite implements CartView {
 	private Widget createItemCell(String photoFile){
 		Anchor a = new Anchor();
 		a.setHTML(SafeHtmlUtils.fromTrustedString("<img src='"+photoFile+"' width='110px'/>"));
-		a.addClickHandler((event)->{});
+//		a.addClickHandler((event)->{});
 		return a;
 	}
 
-	private Widget createDeleteCell(int row, String ref){
+	private Widget createDeleteCell(String ref){
 		Anchor a = new Anchor();
 		a.setStyleName("cart_quantity_delete");
 		a.setHTML(SafeHtmlUtils.fromTrustedString("<i class=\"fa fa-times\"></i>"));
-		a.addClickHandler((event)->{});
+		a.addClickHandler((event)->{
+			int rowToRemove = -1;
+			for(int i = 0; i< cartTable.getRowCount(); i++){
+				String desc = cartTable.getText(i, 1);
+				if(desc.contains(ref)){
+					rowToRemove = i;
+					break;
+				}
+			}
+			if(rowToRemove!=-1) cartTable.removeRow(rowToRemove);
+			CartViewImpl.this.fireEvent(new DeleteItemCartEvent(ref));
+			if(cartTable.getRowCount()==0) UIObject.setVisible(emptyLbl, true);
+		});
 		return a;
 	}
 	
@@ -115,4 +166,5 @@ public class CartViewImpl extends Composite implements CartView {
 		DescCellTemplate desc = GWT.create(DescCellTemplate.class); 
 		return desc.descriptionTemplate(ref, name, i18n.reference());
 	}
+
 }

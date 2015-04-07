@@ -2,6 +2,7 @@ package com.dngconsulting.demo.client.activity;
 
 import com.dngconsulting.demo.client.AppContext;
 import com.dngconsulting.demo.client.ClientFactory;
+import com.dngconsulting.demo.client.places.AccueilPlace;
 import com.dngconsulting.demo.client.places.CartPlace;
 import com.dngconsulting.demo.client.view.CartView;
 import com.dngconsulting.demo.shared.PanierItem;
@@ -11,18 +12,27 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 public class CartActivity extends AbstractActivity {
 	
-	private ClientFactory clientFactory;
+	private CartView view;
 
 	public CartActivity(CartPlace place,ClientFactory clientFactory) {
 		super();
-		this.clientFactory = clientFactory;
+		view = clientFactory.getCartView();
+		view.addDeleteItemCartHandler((event)->{
+			if(event.isClearAll()){
+				AppContext.clearPanier();
+				clientFactory.getPlaceController().goTo(new AccueilPlace());
+			}
+			else{
+				AppContext.removeItemPanier(event.getRefProduct(), true);
+			}
+			
+		});
 	}
 
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		AppContext.getGa().trackUniversalPageview("#!cart:","Panier");
-		CartView view = clientFactory.getCartView();
 		panel.setWidget(view.asWidget());
 		view.clearCart();
 		for (PanierItem item : AppContext.getPanierItems()) {

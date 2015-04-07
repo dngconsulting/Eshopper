@@ -48,6 +48,7 @@ public class FicheProduitActivity extends AbstractActivity {
 			
 			@Override
 			public void success(ProductDTO p) {
+				view.resetQuantity();
 				view.setRef(p.getRef());
 				view.setName(p.getName());
 				view.setImageUrl(p.getPhotoFile());

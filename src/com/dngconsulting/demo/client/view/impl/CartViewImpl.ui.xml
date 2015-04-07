@@ -6,9 +6,17 @@
 	<g:HTMLPanel>
 		<section class="{style.appstyle.cart_items}">
 		<div class="container">
+			<h2 class="{style.appstyle.title} text-center" ui:field="titleLabel"><ui:text from="{i18n.cart}"/></h2>
 			<div class="{style.appstyle.cart_info}">
 				<g:FlexTable styleName="table table-condensed" ui:field="cartTable"></g:FlexTable>
+				<span ui:field="emptyLbl"><ui:text from="{i18n.emptyCartMessage}"/></span>
 			</div>
+			<div  class="{style.appstyle.cart_btn}">
+				<g:Button ui:field="checkoutBtn" styleName="{style.appstyle.btn} {style.appstyle.cart}">
+				<ui:text from="{i18n.checkout}"/>
+			</g:Button>
+			</div>
+			
 		</div>
 	</section> <!--/#cart_items-->
 		

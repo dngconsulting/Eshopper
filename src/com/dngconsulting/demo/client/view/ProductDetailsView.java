@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 
 public interface ProductDetailsView extends IsWidget, HasAddCartHandlers {
 
+	void resetQuantity();
 	void setImageUrl(String url);
 	void setRef(String refLabel);
 	void setName(String nameLabel);

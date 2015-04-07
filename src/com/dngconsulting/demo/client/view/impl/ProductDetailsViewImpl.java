@@ -64,6 +64,10 @@ public class ProductDetailsViewImpl extends Composite implements ProductDetailsV
 			}
 		});
 	}
+	
+	public void resetQuantity(){
+		quantityTB.setText("1");
+	}
 
 	public void setImageUrl(String url){
 		this.url = url;
